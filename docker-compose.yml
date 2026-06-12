@@ -1,5 +1,5 @@
 version: "3.8"
-
+ 
 services:
   postgres:
     image: postgres:15
@@ -12,12 +12,12 @@ services:
       - "5433:5432"
     networks:
       - techstore_network
-
-  microservicio:
-    build: .
+ 
+  techstore-api:
+    build:
+      context: ./techstore-api
+      dockerfile: Dockerfile
     container_name: techstore_api
-    ports:
-      - "8080:8083"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/techstore
       SPRING_DATASOURCE_USERNAME: admin
@@ -26,6 +26,18 @@ services:
       - postgres
     networks:
       - techstore_network
-
+ 
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api_gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - techstore-api
+    networks:
+      - techstore_network
+ 
 networks:
   techstore_network:
