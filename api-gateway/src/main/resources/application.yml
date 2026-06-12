@@ -1,0 +1,27 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: techstore-api
+          uri: http://techstore-api:8083
+          
+          predicates:
+            - Path=/api/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+
+            allowedOrigins:
+              - "http://localhost:5500"
+              - "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders: "*"
