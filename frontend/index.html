@@ -1,14 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TechStore Chile</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hola Mundo</h1>
-    <Button>
-        Click me
-    </Button>
+
+    <header>
+        <h1>TechStore Chile</h1>
+        <p>Gestión de productos con Spring Boot, JWT y API Gateway</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Iniciar sesión</h2>
+
+            <div class="form-grid">
+                <input type="text" id="username" placeholder="Usuario" value="admin">
+                <input type="password" id="password" placeholder="Contraseña" value="admin">
+                <button onclick="login()">Iniciar sesión</button>
+            </div>
+
+            <p id="estadoLogin" class="mensaje"></p>
+        </section>
+
+        <section class="card">
+            <h2>Formulario de producto</h2>
+
+            <input type="hidden" id="productoId">
+
+            <div class="form-grid">
+                <input type="text" id="nombre" placeholder="Nombre del producto">
+                <input type="text" id="descripcion" placeholder="Descripción">
+                <input type="number" id="precio" placeholder="Precio">
+                <input type="number" id="stock" placeholder="Stock">
+                <input type="text" id="categoria" placeholder="Categoría">
+
+                <button onclick="guardarProducto()">Guardar producto</button>
+                <button class="secundario" onclick="limpiarFormulario()">Limpiar</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="titulo-tabla">
+                <h2>Productos activos</h2>
+                <button onclick="listarProductos()">Actualizar lista</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProductos">
+                    <tr>
+                        <td colspan="7">No hay productos cargados.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
