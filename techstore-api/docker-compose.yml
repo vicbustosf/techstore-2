@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: techstore_db_compose
+    environment:
+      POSTGRES_DB: techstore
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5433:5432"
+    networks:
+      - techstore_network
+
+  microservicio:
+    build: .
+    container_name: techstore_api
+    ports:
+      - "8080:8083"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/techstore
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin123
+    depends_on:
+      - postgres
+    networks:
+      - techstore_network
+
+networks:
+  techstore_network:
