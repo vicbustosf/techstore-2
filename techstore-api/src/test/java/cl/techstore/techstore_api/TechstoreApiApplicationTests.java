@@ -9,5 +9,4 @@ class TechstoreApiApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

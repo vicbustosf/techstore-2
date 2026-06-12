@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TechstoreApiApplication<techstore-api>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.techstore.techstore_api.TechstoreApiApplication",
+            "projectName": "techstore-api",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
