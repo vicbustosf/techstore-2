@@ -58,7 +58,7 @@ services:
     networks:
       - techstore_overlay
     deploy:
-      replicas: 2
+      replicas: 1
       restart_policy:
         condition: on-failure
         delay: 10s
